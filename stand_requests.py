@@ -4,15 +4,12 @@ import requests
 
 def post_new_order():
     req = requests.post(configuration.URL + configuration.CREATE_ORDERS,
-                         json = data.orders_body).json()["track"]
+                         json = data.orders_body)
     return req
 
-#print(post_new_order())
 
-def get_orders_track():
-    params = post_new_order()
+def get_orders_track(track_number):
     req = requests.get(configuration.URL + configuration.ORDERS_TRACK, 
-                       params ={"t":params})
+                       params ={"t":track_number})
     return req
     
-#print(get_orders_track())
